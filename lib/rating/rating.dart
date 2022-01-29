@@ -37,7 +37,7 @@ class _RatingPageState extends State<RatingPage> {
             SizedBox(
               height: 40.0,
             ),
-            _heading('Rating Bar'),
+            _heading('Rating for .....'),
             _ratingBar(_ratingBarMode),
             SizedBox(height: 20.0),
             Text(
@@ -48,6 +48,76 @@ class _RatingPageState extends State<RatingPage> {
               ),
             ),
             SizedBox(height: 20.0),
+
+            // comment part
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Text(
+                    "Comment for ....",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.teal[800],
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
+                  SizedBox(height: 15.0),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "comment",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(height: 15.0),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text("Confirm"),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.green),
+                              padding: MaterialStateProperty.all(
+                                  EdgeInsets.fromLTRB(20, 20, 20, 20)),
+                              textStyle: MaterialStateProperty.all(
+                                  TextStyle(fontSize: 15, color: Colors.white)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 50,
+                      ),
+                      Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text("Back"),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.red),
+                              padding: MaterialStateProperty.all(
+                                  EdgeInsets.fromLTRB(20, 20, 20, 20)),
+                              textStyle: MaterialStateProperty.all(
+                                  TextStyle(fontSize: 15, color: Colors.white)),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            // End comment part
+
+            SizedBox(
+              height: 15,
+            ),
           ],
         ),
       ),
@@ -55,26 +125,24 @@ class _RatingPageState extends State<RatingPage> {
   }
 
   Widget _ratingBar(int mode) {
-    return Center(
-      child: RatingBar.builder(
-        initialRating: _initialRating,
-        minRating: 1,
-        allowHalfRating: true,
-        unratedColor: Colors.teal.withAlpha(50),
-        itemCount: 5,
-        itemSize: 50.0,
-        itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-        itemBuilder: (context, _) => Icon(
-          _selectedIcon ?? Icons.star,
-          color: Colors.teal[300],
-        ),
-        onRatingUpdate: (rating) {
-          setState(() {
-            _rating = rating;
-          });
-        },
-        updateOnDrag: true,
+    return RatingBar.builder(
+      initialRating: _initialRating,
+      minRating: 1,
+      allowHalfRating: true,
+      unratedColor: Colors.teal.withAlpha(50),
+      itemCount: 5,
+      itemSize: 50.0,
+      itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+      itemBuilder: (context, _) => Icon(
+        _selectedIcon ?? Icons.star,
+        color: Colors.teal[300],
       ),
+      onRatingUpdate: (rating) {
+        setState(() {
+          _rating = rating;
+        });
+      },
+      updateOnDrag: true,
     );
   }
 }
