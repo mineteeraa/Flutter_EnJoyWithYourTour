@@ -1,16 +1,32 @@
-import 'dart:html';
-import 'dart:js';
-
 import 'package:flutter/material.dart';
+import 'package:group4/services/world_time.dart';
 
-class mdrawer extends StatefulWidget {
-  //const mdrawer({Key? key}) : super(key: key);
+class Sidebar extends StatefulWidget {
+  const Sidebar({Key? key}) : super(key: key);
 
   @override
-  _mdrawerState createState() => _mdrawerState();
+  _SidebarState createState() => _SidebarState();
 }
 
-class _mdrawerState extends State<mdrawer> {
+class _SidebarState extends State<Sidebar> {
+  String time = '';
+  String date = '';
+
+  void setWorldTime() async {
+    WorldTime ins = WorldTime(url: '');
+    await ins.getTime();
+    setState(() {
+      time = ins.time;
+      date = ins.date;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setWorldTime();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -46,7 +62,7 @@ class _mdrawerState extends State<mdrawer> {
                 children: <Widget>[
                   ExpansionTile(
                     leading: const Image(
-                      image: AssetImage('asia.png'),
+                      image: AssetImage('assets/asia.png'),
                       height: 35,
                     ),
                     title: const Text(
@@ -58,7 +74,7 @@ class _mdrawerState extends State<mdrawer> {
                     children: [
                       ListTile(
                         leading: const Image(
-                          image: AssetImage('Thailand.png'),
+                          image: AssetImage('assets/Thailand.png'),
                           height: 22,
                         ),
                         title: const Text(
@@ -72,7 +88,7 @@ class _mdrawerState extends State<mdrawer> {
                       ),
                       ListTile(
                         leading: const Image(
-                          image: AssetImage('china.png'),
+                          image: AssetImage('assets/china.png'),
                           height: 22,
                         ),
                         title: const Text(
@@ -88,7 +104,7 @@ class _mdrawerState extends State<mdrawer> {
                   ),
                   ExpansionTile(
                     leading: const Image(
-                      image: AssetImage('africa.png'),
+                      image: AssetImage('assets/africa.png'),
                       height: 35,
                     ),
                     title: const Text(
@@ -100,7 +116,7 @@ class _mdrawerState extends State<mdrawer> {
                     children: [
                       ListTile(
                         leading: const Image(
-                          image: AssetImage('egypt.png'),
+                          image: AssetImage('assets/egypt.png'),
                           height: 22,
                         ),
                         title: const Text(
@@ -114,7 +130,7 @@ class _mdrawerState extends State<mdrawer> {
                       ),
                       ListTile(
                         leading: const Image(
-                          image: AssetImage('sudan.png'),
+                          image: AssetImage('assets/sudan.png'),
                           height: 22,
                         ),
                         title: const Text(
@@ -130,7 +146,7 @@ class _mdrawerState extends State<mdrawer> {
                   ),
                   ExpansionTile(
                     leading: const Image(
-                      image: AssetImage('europe.png'),
+                      image: AssetImage('assets/europe.png'),
                       height: 35,
                     ),
                     title: const Text(
@@ -142,7 +158,7 @@ class _mdrawerState extends State<mdrawer> {
                     children: [
                       ListTile(
                         leading: const Image(
-                          image: AssetImage('germany.png'),
+                          image: AssetImage('assets/germany.png'),
                           height: 22,
                         ),
                         title: const Text(
@@ -156,7 +172,7 @@ class _mdrawerState extends State<mdrawer> {
                       ),
                       ListTile(
                         leading: const Image(
-                          image: AssetImage('greece.png'),
+                          image: AssetImage('assets/greece.png'),
                           height: 22,
                         ),
                         title: const Text(

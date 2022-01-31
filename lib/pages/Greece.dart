@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:group4/drawer.dart';
+/* import 'package:flutter/material.dart';
 import 'package:group4/services/world_time.dart';
 
 class greece extends StatefulWidget {
@@ -40,7 +39,6 @@ class _greeceState extends State<greece> {
           ),
           iconTheme: IconThemeData(color: Colors.grey[900]),
         ),
-        drawer: mdrawer(),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
           child: Column(
@@ -75,3 +73,4 @@ class _greeceState extends State<greece> {
         ));
   }
 }
+ */

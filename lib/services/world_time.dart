@@ -1,11 +1,11 @@
-import 'dart:convert';
 import 'package:http/http.dart';
+import 'dart:async';
+import 'dart:convert';
 import 'package:intl/intl.dart';
 
 class WorldTime {
   late String date;
   late String time;
-
   late String url;
 
   WorldTime({required this.url});
