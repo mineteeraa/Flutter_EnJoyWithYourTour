@@ -1,4 +1,4 @@
-package com.example.group4
+package com.camt.EnjoyWithYourTour
 
 import io.flutter.embedding.android.FlutterActivity
 

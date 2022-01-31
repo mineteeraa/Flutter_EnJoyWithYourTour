@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "467182784252",
+    "project_id": "term-project-flutter",
+    "storage_bucket": "term-project-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467182784252:android:034ca8c00258512499d179",
+        "android_client_info": {
+          "package_name": "com.camt.EnjoyWithYourTour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467182784252-3bf9rj38s0ibk7v2ka16efk91qp389kf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.camt.EnjoyWithYourTour",
+            "certificate_hash": "c9ab2f464d68b4d101d6928e4b6da074e599187a"
+          }
+        },
+        {
+          "client_id": "467182784252-cf7f1bnqlh17b1s39426e0pq4gfvih0p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqb9oU82wdT-v88dgOLFe-QfTy4wtIDYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467182784252-cf7f1bnqlh17b1s39426e0pq4gfvih0p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

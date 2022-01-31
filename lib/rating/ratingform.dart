@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:group4/model/rating.dart';
 
 class RatingPage extends StatefulWidget {
   const RatingPage({Key? key}) : super(key: key);
@@ -9,6 +12,14 @@ class RatingPage extends StatefulWidget {
 }
 
 class _RatingPageState extends State<RatingPage> {
+
+  final formKey = GlobalKey<FormState>();
+  Rating myStudent = Rating();
+  //เตรียม firebase
+  final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  CollectionReference _studentCollection = FirebaseFirestore.instance.collection("rating");
+
+
   late final _ratingController;
   late double _rating;
 
@@ -54,13 +65,16 @@ class _RatingPageState extends State<RatingPage> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Text(
-                    "Comment for ....",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.teal[800],
-                    ),
-                    textAlign: TextAlign.right,
+                  Row(
+                    children: [
+                      Text(
+                        "Comment for ....",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.teal[800],
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 15.0),
                   TextField(
@@ -71,42 +85,44 @@ class _RatingPageState extends State<RatingPage> {
                   ),
                   SizedBox(height: 15.0),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Column(
                         children: [
                           ElevatedButton(
                             onPressed: () {},
                             child: Text("Confirm"),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.green),
-                              padding: MaterialStateProperty.all(
-                                  EdgeInsets.fromLTRB(20, 20, 20, 20)),
-                              textStyle: MaterialStateProperty.all(
-                                  TextStyle(fontSize: 15, color: Colors.white)),
-                            ),
+                            style: ElevatedButton.styleFrom(
+                                // backgroundColor:
+                                //     MaterialStateProperty.all(Colors.green),
+                                // padding: MaterialStateProperty.all(
+                                //     EdgeInsets.all(100)),
+                                // textStyle: MaterialStateProperty.all(
+                                //     TextStyle(fontSize: 15, color: Colors.white)),
+                                primary: Colors.green,
+                                fixedSize: const Size(200, 50),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50))),
                           ),
                         ],
                       ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Column(
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {},
-                            child: Text("Back"),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.red),
-                              padding: MaterialStateProperty.all(
-                                  EdgeInsets.fromLTRB(20, 20, 20, 20)),
-                              textStyle: MaterialStateProperty.all(
-                                  TextStyle(fontSize: 15, color: Colors.white)),
-                            ),
-                          ),
-                        ],
-                      )
+
+                      // Column(
+                      //   children: [
+                      //     ElevatedButton(
+                      //       onPressed: () {},
+                      //       child: Text("Back"),
+                      //       style: ButtonStyle(
+                      //         backgroundColor:
+                      //             MaterialStateProperty.all(Colors.red),
+                      //         padding: MaterialStateProperty.all(
+                      //             EdgeInsets.fromLTRB(20, 20, 20, 20)),
+                      //         textStyle: MaterialStateProperty.all(
+                      //             TextStyle(fontSize: 15, color: Colors.white)),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // )
                     ],
                   ),
                 ],
