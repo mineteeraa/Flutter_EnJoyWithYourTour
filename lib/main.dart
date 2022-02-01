@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:group4/rating/formscreen.dart';
 import 'package:group4/rating/ratingform.dart';
+import 'package:group4/rating/ratinglist.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -42,14 +44,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
-  void initState() {
-    super.initState();
-    Firebase.initializeApp().whenComplete(() {
-      print("completed");
-      setState(() {});
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Firebase.initializeApp().whenComplete(() {
+  //     print("completed");
+  //     setState(() {});
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: FormScreen());
+        body: RatingList());
   }
 }

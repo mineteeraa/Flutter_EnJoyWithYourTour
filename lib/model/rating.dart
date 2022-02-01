@@ -1,6 +1,6 @@
-class Rating{
+class Rating {
   String rating;
   String comment;
 
-  Rating({this.rating, this.comment});
+  Rating({required this.rating, required this.comment});
 }

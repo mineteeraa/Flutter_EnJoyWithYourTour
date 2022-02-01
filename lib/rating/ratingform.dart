@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:group4/model/rating.dart';
+import 'package:group4/rating/ratinglist.dart';
 
 class RatingPage extends StatefulWidget {
   const RatingPage({Key? key}) : super(key: key);
@@ -12,13 +13,14 @@ class RatingPage extends StatefulWidget {
 }
 
 class _RatingPageState extends State<RatingPage> {
-
   final formKey = GlobalKey<FormState>();
-  Rating myStudent = Rating();
+  late Rating myRating;
   //เตรียม firebase
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   CollectionReference _studentCollection = FirebaseFirestore.instance.collection("rating");
 
+  var rate;
+  var myComment;
 
   late final _ratingController;
   late double _rating;
@@ -82,6 +84,9 @@ class _RatingPageState extends State<RatingPage> {
                       labelText: "comment",
                       border: OutlineInputBorder(),
                     ),
+                    onChanged: (String comment) {
+                      myComment = comment;
+                    },
                   ),
                   SizedBox(height: 15.0),
                   Row(
@@ -90,45 +95,48 @@ class _RatingPageState extends State<RatingPage> {
                       Column(
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              if (formKey.currentState!.validate()) {
+                                formKey.currentState!.save();
+                                await _studentCollection.add({
+                                  "rating": '${rate}',
+                                  "comment": myComment,
+                                });
+                                formKey.currentState!.reset();
+                              }
+                            },
                             child: Text("Confirm"),
                             style: ElevatedButton.styleFrom(
-                                // backgroundColor:
-                                //     MaterialStateProperty.all(Colors.green),
-                                // padding: MaterialStateProperty.all(
-                                //     EdgeInsets.all(100)),
-                                // textStyle: MaterialStateProperty.all(
-                                //     TextStyle(fontSize: 15, color: Colors.white)),
                                 primary: Colors.green,
-                                fixedSize: const Size(200, 50),
+                                fixedSize: const Size(100, 50),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50))),
                           ),
                         ],
                       ),
-
-                      // Column(
-                      //   children: [
-                      //     ElevatedButton(
-                      //       onPressed: () {},
-                      //       child: Text("Back"),
-                      //       style: ButtonStyle(
-                      //         backgroundColor:
-                      //             MaterialStateProperty.all(Colors.red),
-                      //         padding: MaterialStateProperty.all(
-                      //             EdgeInsets.fromLTRB(20, 20, 20, 20)),
-                      //         textStyle: MaterialStateProperty.all(
-                      //             TextStyle(fontSize: 15, color: Colors.white)),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // )
+                      Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const RatingList()),
+                              );
+                            },
+                            child: Text("rating list"),
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.green,
+                                fixedSize: const Size(100, 50),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50))),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
-
             // End comment part
 
             SizedBox(
@@ -156,6 +164,7 @@ class _RatingPageState extends State<RatingPage> {
       onRatingUpdate: (rating) {
         setState(() {
           _rating = rating;
+          rate = rating;
         });
       },
       updateOnDrag: true,
