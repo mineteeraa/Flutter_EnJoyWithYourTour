@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:group4/services/world_time.dart';
 
-class bangkok extends StatefulWidget {
-  const bangkok({Key? key}) : super(key: key);
-
-  @override
-  _bangkokState createState() => _bangkokState();
+String TimeZone = "Asia/Bangkok";
+String Region = "Thailand";
+void setData(String timezone, String region) {
+  TimeZone = timezone;
+  Region = region;
 }
 
-class _bangkokState extends State<bangkok> {
+class TimePage extends StatefulWidget {
+  @override
+  _TimePageState createState() => _TimePageState();
+}
+
+class _TimePageState extends State<TimePage> {
   String time = '';
   String date = '';
+
   void setWorldTime() async {
-    WorldTime ins = WorldTime(url: 'Asia/Bangkok');
+    WorldTime ins = WorldTime(url: TimeZone);
     await ins.getTime();
     setState(() {
       time = ins.time;
@@ -37,7 +43,7 @@ class _bangkokState extends State<bangkok> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Thailand',
+                Region,
                 style: TextStyle(fontSize: 28, letterSpacing: 1),
               )
             ],
