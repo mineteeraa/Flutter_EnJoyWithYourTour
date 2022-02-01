@@ -17,7 +17,8 @@ class _RatingPageState extends State<RatingPage> {
   late Rating myRating;
   //เตรียม firebase
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  CollectionReference _studentCollection = FirebaseFirestore.instance.collection("rating");
+  CollectionReference _studentCollection =
+      FirebaseFirestore.instance.collection("rating");
 
   var rate;
   var myComment;
@@ -96,14 +97,10 @@ class _RatingPageState extends State<RatingPage> {
                         children: [
                           ElevatedButton(
                             onPressed: () async {
-                              if (formKey.currentState!.validate()) {
-                                formKey.currentState!.save();
-                                await _studentCollection.add({
-                                  "rating": '${rate}',
-                                  "comment": myComment,
-                                });
-                                formKey.currentState!.reset();
-                              }
+                              await _studentCollection.add({
+                                "rating": '${rate}',
+                                "comment": myComment,
+                              });
                             },
                             child: Text("Confirm"),
                             style: ElevatedButton.styleFrom(
@@ -120,7 +117,8 @@ class _RatingPageState extends State<RatingPage> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const RatingList()),
+                                MaterialPageRoute(
+                                    builder: (context) => const RatingList()),
                               );
                             },
                             child: Text("rating list"),
