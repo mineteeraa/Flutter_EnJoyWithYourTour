@@ -27,7 +27,7 @@ class _RatingPageState extends State<RatingPage> {
   late double _rating;
 
   int _ratingBarMode = 1;
-  double _initialRating = 2.0;
+  double _initialRating = 1.0;
   bool _isRTLMode = false;
 
   IconData? _selectedIcon;
@@ -104,26 +104,7 @@ class _RatingPageState extends State<RatingPage> {
                             },
                             child: Text("Confirm"),
                             style: ElevatedButton.styleFrom(
-                                primary: Colors.green,
-                                fixedSize: const Size(100, 50),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50))),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const RatingList()),
-                              );
-                            },
-                            child: Text("rating list"),
-                            style: ElevatedButton.styleFrom(
-                                primary: Colors.green,
+                                primary: Colors.teal,
                                 fixedSize: const Size(100, 50),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50))),
