@@ -26,7 +26,7 @@ class _RatingPageState extends State<RatingPage> {
   late final _ratingController;
   late double _rating;
 
-  int _ratingBarMode = 1;
+  // int _ratingBarMode = 1;
   double _initialRating = 1.0;
   bool _isRTLMode = false;
 
@@ -48,11 +48,16 @@ class _RatingPageState extends State<RatingPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
-              height: 40.0,
+            Text(
+              "Rating for .....",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24.0,
+                color: Colors.teal[800],
+              ),
             ),
-            _heading('Rating for .....'),
-            _ratingBar(_ratingBarMode),
+            SizedBox(height: 20.0),
+            _ratingBar(),
             SizedBox(height: 20.0),
             Text(
               'Rating: $_rating',
@@ -90,51 +95,37 @@ class _RatingPageState extends State<RatingPage> {
                     },
                   ),
                   SizedBox(height: 15.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          ElevatedButton(
-                            onPressed: () async {
-                              await _studentCollection.add({
-                                "rating": '${rate}',
-                                "comment": myComment,
-                              });
-                            },
-                            child: Text("Confirm"),
-                            style: ElevatedButton.styleFrom(
-                                primary: Colors.teal,
-                                fixedSize: const Size(100, 50),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50))),
-                          ),
-                        ],
-                      ),
-                    ],
+                  ElevatedButton(
+                    onPressed: () async {
+                      await _studentCollection.add({
+                        "rating": '${rate}',
+                        "comment": myComment,
+                      });
+                    },
+                    child: Text("Confirm"),
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.teal,
+                        fixedSize: const Size(100, 50),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
                   ),
                 ],
               ),
             ),
             // End comment part
-
-            SizedBox(
-              height: 15,
-            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _ratingBar(int mode) {
+  Widget _ratingBar() {
     return RatingBar.builder(
       initialRating: _initialRating,
       minRating: 1,
       allowHalfRating: true,
       unratedColor: Colors.teal.withAlpha(50),
       itemCount: 5,
-      itemSize: 50.0,
       itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
       itemBuilder: (context, _) => Icon(
         _selectedIcon ?? Icons.star,
@@ -150,19 +141,3 @@ class _RatingPageState extends State<RatingPage> {
     );
   }
 }
-
-Widget _heading(String text) => Column(
-      children: [
-        Text(
-          text,
-          style: TextStyle(
-            fontWeight: FontWeight.w300,
-            fontSize: 24.0,
-            color: Colors.teal[800],
-          ),
-        ),
-        SizedBox(
-          height: 20.0,
-        ),
-      ],
-    );
