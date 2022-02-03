@@ -1,14 +1,17 @@
+import 'dart:convert';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:group4/component/sidebar.dart';
 import 'package:group4/services/world_time.dart';
 
-String TimeZone = "Asia/Bangkok";
-String Region = "Thailand";
-void setData(String timezone, String region) {
-  TimeZone = timezone;
-  Region = region;
-}
+late Map<String, dynamic> res = {};
+late List<dynamic> item = [];
 
 class TimePage extends StatefulWidget {
+  late String TimeZone;
+  late String Region;
+  TimePage({required this.TimeZone, required this.Region});
+
   @override
   _TimePageState createState() => _TimePageState();
 }
@@ -16,25 +19,46 @@ class TimePage extends StatefulWidget {
 class _TimePageState extends State<TimePage> {
   String time = '';
   String date = '';
+  late final WorldTime worldTime =
+      WorldTime(timeZone: timeZone, region: region);
+  late String timeZone = widget.TimeZone;
+  late String region = widget.Region;
 
-  void setWorldTime() async {
-    WorldTime ins = WorldTime(url: TimeZone);
-    await ins.getTime();
+  Future<String?> getAllTime() async {
+    if (timeZone == "" && region == "") {
+      timeZone = "Asia/Bangkok";
+      region = "Thailand";
+    }
+    var response = await worldTime.fetchTime(timeZone);
     setState(() {
-      time = ins.time;
-      date = ins.date;
+      res = json.decode(response.body);
+      String datetime = res["datetime"];
+      DateTime now = DateTime.parse(datetime);
+      String offset = res["utc_offset"].substring(0, 3);
+      now = now.add(Duration(hours: int.parse(offset)));
+      date = DateFormat.yMd().format(now);
+      time = DateFormat.jm().format(now);
     });
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    setWorldTime();
+    getAllTime();
   }
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.teal,
+      ),
+      drawer: const Sidebar(),
+      body: page(),
+    );
+  }
+
+  Widget page() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
       child: Column(
@@ -43,8 +67,8 @@ class _TimePageState extends State<TimePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                Region,
-                style: TextStyle(fontSize: 28, letterSpacing: 1),
+                region,
+                style: TextStyle(fontSize: 28, letterSpacing: 1, fontWeight: FontWeight.bold),
               )
             ],
           ),
@@ -55,11 +79,11 @@ class _TimePageState extends State<TimePage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                'Date:$date',
+                'Date: $date',
                 style: TextStyle(fontSize: 20),
               ),
               Text(
-                'Time:$time',
+                'Time: $time',
                 style: TextStyle(fontSize: 20),
               )
             ],

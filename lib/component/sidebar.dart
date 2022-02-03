@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:group4/pages/TimePage.dart';
 
 class Sidebar extends StatefulWidget {
@@ -18,7 +17,17 @@ class _SidebarState extends State<Sidebar> {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.teal[50],
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Colors.teal,
+                  Colors.teal.shade50,
+                ],
+              ),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(25),
+                  bottomRight: Radius.circular(25)),
             ),
             child: Row(
               children: <Widget>[
@@ -34,9 +43,9 @@ class _SidebarState extends State<Sidebar> {
                 const Text(
                   "Enjoy with your tour",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.white),
                 ),
               ],
             ),
@@ -44,182 +53,156 @@ class _SidebarState extends State<Sidebar> {
           ListTile(
             leading: const Image(
               image: AssetImage('assets/Thailand.png'),
-              height: 22,
+              width: 30,
             ),
             title: const Text(
               'Thailand',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             onTap: () {
-              setData("America/New_York", "TestTEstttt");
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => TimePage(
+                          TimeZone: 'Asia/Bangkok',
+                          Region: 'Thailand',
+                        )));
+              });
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ListTile(
+            leading: const Image(
+              image: AssetImage('assets/China.png'),
+              width: 30,
+            ),
+            title: const Text(
+              'China',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => TimePage(
+                          TimeZone: 'Asia/Shanghai',
+                          Region: 'China',
+                        )));
+              });
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ListTile(
+            leading: const Image(
+              image: AssetImage('assets/Brunei.png'),
+              width: 30,
+            ),
+            title: const Text(
+              'Brunei',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => TimePage(
+                          TimeZone: 'Asia/Brunei',
+                          Region: 'Brunei',
+                        )));
+              });
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ListTile(
+            leading: const Image(
+              image: AssetImage('assets/Indonesia.png'),
+              width: 30,
+            ),
+            title: const Text(
+              'Indonesia',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => TimePage(
+                          TimeZone: 'Asia/Jakarta',
+                          Region: 'Indonesia',
+                        )));
+              });
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ListTile(
+            leading: const Image(
+              image: AssetImage('assets/Malaysia.png'),
+              width: 30,
+            ),
+            title: const Text(
+              'Malaysia',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => TimePage(
+                          TimeZone: 'Asia/Kuala_Lumpur',
+                          Region: 'Malaysia',
+                        )));
+              });
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ListTile(
+            leading: const Image(
+              image: AssetImage('assets/Philippines.png'),
+              width: 30,
+            ),
+            title: const Text(
+              'Philippines',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => TimePage(
+                          TimeZone: 'Asia/Manila',
+                          Region: 'Philippines',
+                        )));
+              });
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ListTile(
+            leading: const Image(
+              image: AssetImage('assets/Singapore.png'),
+              width: 30,
+            ),
+            title: const Text(
+              'Singapore',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => TimePage(
+                          TimeZone: 'Asia/Singapore',
+                          Region: 'Singapore',
+                        )));
+              });
             },
           ),
         ],
       ),
     );
-
-    /* Drawer(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 38.0),
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: ClipOval(
-                    child: Image.asset(
-                      "assets/travel.png",
-                      width: 80,
-                    ),
-                  ),
-                ),
-                const Text(
-                  "Enjoy with your tour",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView(
-              children: <Widget>[
-                ExpansionTile(
-                  title: const Text(
-                    'Asia',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  children: [
-                    ListTile(
-                      leading: const Image(
-                        image: AssetImage('assets/Thailand.png'),
-                        height: 22,
-                      ),
-                      title: const Text(
-                        'Thailand',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, '/bankok');
-                      },
-                    ),
-                    ListTile(
-                      leading: const Image(
-                        image: AssetImage('assets/china.png'),
-                        height: 22,
-                      ),
-                      title: const Text(
-                        'China',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, '/shanghai');
-                      },
-                    ),
-                  ],
-                ),
-                ExpansionTile(
-                  title: const Text(
-                    'Africa',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  children: [
-                    ListTile(
-                      leading: const Image(
-                        image: AssetImage('assets/egypt.png'),
-                        height: 22,
-                      ),
-                      title: const Text(
-                        'Egypt',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, '/egypt');
-                      },
-                    ),
-                    ListTile(
-                      leading: const Image(
-                        image: AssetImage('assets/sudan.png'),
-                        height: 22,
-                      ),
-                      title: const Text(
-                        'Sudan',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, '/sudan');
-                      },
-                    ),
-                  ],
-                ),
-                ExpansionTile(
-                  title: const Text(
-                    'Europe',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  children: [
-                    ListTile(
-                      leading: const Image(
-                        image: AssetImage('assets/germany.png'),
-                        height: 22,
-                      ),
-                      title: const Text(
-                        'Germany',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, '/germany');
-                      },
-                    ),
-                    ListTile(
-                      leading: const Image(
-                        image: AssetImage('assets/greece.png'),
-                        height: 22,
-                      ),
-                      title: const Text(
-                        'Greece',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, '/greece');
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-/*           ListTile(title: Text('Item 1'), onTap: () {}),
-          ListTile(
-            title: Text('Item 2'),
-            onTap: () {},
-          ),
-          Divider(),
-          Expanded(
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: ListTile(
-                title: Text('Item 3'),
-                onTap: () {},
-              ),
-            ),
-          ), */
-        ],
-      ),
-    ); */
   }
 }
