@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.group4">
+    package="com.camt.EnjoyWithYourTour">
    <application
         android:label="group4"
         android:name="${applicationName}"
