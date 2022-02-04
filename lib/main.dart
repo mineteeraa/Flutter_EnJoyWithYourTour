@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Enjoy with your tour',
       home: MyHomePage(
         TimeZone: '',
-        Region: '',
+        Country: '',
       ),
     );
   }
@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   late String TimeZone;
-  late String Region;
-  MyHomePage({required this.TimeZone, required this.Region});
+  late String Country;
+  MyHomePage({required this.TimeZone, required this.Country});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      TimePage(TimeZone: widget.TimeZone, Region: widget.Region),
+      TimePage(TimeZone: widget.TimeZone, Country: widget.Country),
       RatingList()
     ];
     return Scaffold(

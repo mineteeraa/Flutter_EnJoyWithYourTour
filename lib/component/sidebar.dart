@@ -64,7 +64,7 @@ class _SidebarState extends State<Sidebar> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Bangkok',
-                          Region: 'Thailand',
+                          Country: 'Thailand',
                         )));
               });
             },
@@ -86,7 +86,7 @@ class _SidebarState extends State<Sidebar> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Shanghai',
-                          Region: 'China',
+                          Country: 'China',
                         )));
               });
             },
@@ -108,7 +108,7 @@ class _SidebarState extends State<Sidebar> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Brunei',
-                          Region: 'Brunei',
+                          Country: 'Brunei',
                         )));
               });
             },
@@ -130,7 +130,7 @@ class _SidebarState extends State<Sidebar> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Jakarta',
-                          Region: 'Indonesia',
+                          Country: 'Indonesia',
                         )));
               });
             },
@@ -152,7 +152,7 @@ class _SidebarState extends State<Sidebar> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Kuala_Lumpur',
-                          Region: 'Malaysia',
+                          Country: 'Malaysia',
                         )));
               });
             },
@@ -174,7 +174,7 @@ class _SidebarState extends State<Sidebar> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Manila',
-                          Region: 'Philippines',
+                          Country: 'Philippines',
                         )));
               });
             },
@@ -196,7 +196,7 @@ class _SidebarState extends State<Sidebar> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Singapore',
-                          Region: 'Singapore',
+                          Country: 'Singapore',
                         )));
               });
             },

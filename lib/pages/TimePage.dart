@@ -9,8 +9,8 @@ late List<dynamic> item = [];
 
 class TimePage extends StatefulWidget {
   late String TimeZone;
-  late String Region;
-  TimePage({required this.TimeZone, required this.Region});
+  late String Country;
+  TimePage({required this.TimeZone, required this.Country});
 
   @override
   _TimePageState createState() => _TimePageState();
@@ -20,14 +20,14 @@ class _TimePageState extends State<TimePage> {
   String time = '';
   String date = '';
   late final WorldTime worldTime =
-      WorldTime(timeZone: timeZone, region: region);
+      WorldTime(timeZone: timeZone, country: country);
   late String timeZone = widget.TimeZone;
-  late String region = widget.Region;
+  late String country = widget.Country;
 
   Future<String?> getAllTime() async {
-    if (timeZone == "" && region == "") {
+    if (timeZone == "" && country == "") {
       timeZone = "Asia/Bangkok";
-      region = "Thailand";
+      country = "Thailand";
     }
     var response = await worldTime.fetchTime(timeZone);
     setState(() {
@@ -58,7 +58,7 @@ class _TimePageState extends State<TimePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  region,
+                  country,
                   style: TextStyle(
                       fontSize: 28,
                       letterSpacing: 1,
@@ -85,7 +85,7 @@ class _TimePageState extends State<TimePage> {
             SizedBox(
               height: 40,
             ),
-            RatingPage(Region: region)
+            RatingPage(Country: country)
           ],
         ),
       ),

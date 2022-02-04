@@ -5,8 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:group4/model/rating.dart';
 
 class RatingPage extends StatefulWidget {
-  late String Region;
-  RatingPage({required this.Region});
+  late String Country;
+  RatingPage({required this.Country});
 
   @override
   _RatingPageState createState() => _RatingPageState();
@@ -49,7 +49,7 @@ class _RatingPageState extends State<RatingPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Rating for ${widget.Region}",
+              "Rating for ${widget.Country}",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24.0,
@@ -76,7 +76,7 @@ class _RatingPageState extends State<RatingPage> {
                   Row(
                     children: [
                       Text(
-                        "Comment for ${widget.Region}",
+                        "Comment for ${widget.Country}",
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.teal[800],
