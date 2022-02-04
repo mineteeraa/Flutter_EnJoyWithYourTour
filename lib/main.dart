@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:group4/rating/ratingform.dart';
+import 'package:group4/component/sidebar.dart';
 import 'package:group4/rating/ratinglist.dart';
 import 'package:group4/pages/TimePage.dart';
 
@@ -15,40 +15,48 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: TimePage(TimeZone: '', Region: '',),
+      title: 'Enjoy with your tour',
+      home: MyHomePage(
+        TimeZone: '',
+        Region: '',
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  late String TimeZone;
+  late String Region;
+  MyHomePage({required this.TimeZone, required this.Region});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
-  final tabs = [RatingPage(), RatingList()];
 
   @override
   Widget build(BuildContext context) {
+    final tabs = [
+      TimePage(TimeZone: widget.TimeZone, Region: widget.Region),
+      RatingList()
+    ];
     return Scaffold(
- 
+      appBar: AppBar(
+        backgroundColor: Colors.teal,
+      ),
+      drawer: const Sidebar(),
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Rating Form"),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Homepage"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.calculate), label: "Rating List"),
+              icon: Icon(Icons.rate_review), label: "Rating List"),
         ],
         onTap: (index) {
           setState(() {
-            print(index);
             _currentIndex = index;
           });
         },

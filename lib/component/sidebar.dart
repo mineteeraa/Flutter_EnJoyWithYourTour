@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:group4/pages/TimePage.dart';
+import 'package:group4/main.dart';
 
 class Sidebar extends StatefulWidget {
   const Sidebar({Key? key}) : super(key: key);
@@ -62,7 +62,7 @@ class _SidebarState extends State<Sidebar> {
             onTap: () {
               setState(() {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => TimePage(
+                    builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Bangkok',
                           Region: 'Thailand',
                         )));
@@ -84,7 +84,7 @@ class _SidebarState extends State<Sidebar> {
             onTap: () {
               setState(() {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => TimePage(
+                    builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Shanghai',
                           Region: 'China',
                         )));
@@ -106,7 +106,7 @@ class _SidebarState extends State<Sidebar> {
             onTap: () {
               setState(() {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => TimePage(
+                    builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Brunei',
                           Region: 'Brunei',
                         )));
@@ -128,7 +128,7 @@ class _SidebarState extends State<Sidebar> {
             onTap: () {
               setState(() {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => TimePage(
+                    builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Jakarta',
                           Region: 'Indonesia',
                         )));
@@ -150,7 +150,7 @@ class _SidebarState extends State<Sidebar> {
             onTap: () {
               setState(() {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => TimePage(
+                    builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Kuala_Lumpur',
                           Region: 'Malaysia',
                         )));
@@ -172,7 +172,7 @@ class _SidebarState extends State<Sidebar> {
             onTap: () {
               setState(() {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => TimePage(
+                    builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Manila',
                           Region: 'Philippines',
                         )));
@@ -194,7 +194,7 @@ class _SidebarState extends State<Sidebar> {
             onTap: () {
               setState(() {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => TimePage(
+                    builder: (context) => MyHomePage(
                           TimeZone: 'Asia/Singapore',
                           Region: 'Singapore',
                         )));
