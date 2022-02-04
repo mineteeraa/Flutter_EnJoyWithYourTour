@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:group4/rating/ratingform.dart';
 import 'package:group4/rating/ratinglist.dart';
 import 'package:group4/pages/TimePage.dart';
+import 'package:group4/video/VideoApp.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: TimePage(TimeZone: '', Region: '',),
+      home: VideoApp()
     );
   }
 }
