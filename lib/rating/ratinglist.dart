@@ -27,14 +27,18 @@ class _RatingListState extends State<RatingList> {
                     leading: CircleAvatar(
                       radius: 30,
                       child: FittedBox(
-                        child: Text("Country"),
+                        child: Text(rating["country"]),
                       ),
                     ),
                     title: Text(
-                      "Rating: " + rating["rating"],
+                      "Rating for: " + rating["country"],
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    subtitle: Text(rating["comment"]),
+                    subtitle: Text(
+                      "Score rating: " + rating["rating"] +" Comment: "+ rating["comment"],
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    // subtitle: Text(rating["comment"]),
                   ),
                 );
               }).toList(),

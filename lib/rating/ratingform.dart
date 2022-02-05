@@ -17,7 +17,7 @@ class _RatingPageState extends State<RatingPage> {
   late Rating myRating;
   //เตรียม firebase
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  CollectionReference _studentCollection =
+  CollectionReference _ratingCollection =
       FirebaseFirestore.instance.collection("rating");
 
   var rate;
@@ -97,9 +97,10 @@ class _RatingPageState extends State<RatingPage> {
                   SizedBox(height: 15.0),
                   ElevatedButton(
                     onPressed: () async {
-                      await _studentCollection.add({
+                      await _ratingCollection.add({
                         "rating": '${rate}',
                         "comment": myComment,
+                        "country" : widget.Country
                       });
                     },
                     child: Text("Confirm"),
