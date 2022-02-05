@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:group4/model/rating.dart';
+import 'package:enjoywithyourtour/model/rating.dart';
 
 class RatingPage extends StatefulWidget {
   late String Country;
@@ -100,7 +100,7 @@ class _RatingPageState extends State<RatingPage> {
                       await _ratingCollection.add({
                         "rating": '${rate}',
                         "comment": myComment,
-                        "country" : widget.Country
+                        "country": widget.Country
                       });
                     },
                     child: Text("Confirm"),

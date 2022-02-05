@@ -1,8 +1,9 @@
 import 'dart:convert';
+import 'package:enjoywithyourtour/chart/piechart.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:group4/services/world_time.dart';
-import 'package:group4/rating/ratingform.dart';
+import 'package:enjoywithyourtour/services/world_time.dart';
+import 'package:enjoywithyourtour/rating/ratingform.dart';
 
 late Map<String, dynamic> res = {};
 late List<dynamic> item = [];
@@ -50,7 +51,8 @@ class _TimePageState extends State<TimePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
+        body: SingleChildScrollView(
+      child: Padding(
         padding: const EdgeInsets.only(top: 20.0),
         child: Column(
           children: [
@@ -82,13 +84,16 @@ class _TimePageState extends State<TimePage> {
                 )
               ],
             ),
-            SizedBox(
-              height: 40,
+            PieChartSample1(
+              CountrysName: country,
             ),
-            RatingPage(Country: country)
+            RatingPage(Country: country),
+            SizedBox(
+              height: 15,
+            ),
           ],
         ),
       ),
-    );
+    ));
   }
 }

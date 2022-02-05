@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:group4/model/asiaModel.dart';
+import 'package:enjoywithyourtour/model/asiaModel.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 
 class Maps extends StatefulWidget {

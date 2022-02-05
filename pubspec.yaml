@@ -1,4 +1,4 @@
-name: group4
+name: enjoywithyourtour
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -42,6 +42,7 @@ dependencies:
   cloud_firestore: ^3.1.7
   video_player: ^2.2.18
   syncfusion_flutter_maps: ^19.4.48-beta
+  fl_chart: ^0.41.0
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +64,7 @@ flutter:
     - assets/
     - assets/asean1.mp4
     - assets/data/asia.json
+    - assets/data/chartData.json
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

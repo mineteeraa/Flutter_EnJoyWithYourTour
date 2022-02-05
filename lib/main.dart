@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:group4/component/sidebar.dart';
-import 'package:group4/rating/ratinglist.dart';
-import 'package:group4/pages/Maps.dart';
-import 'package:group4/pages/TimePage.dart';
-import 'package:group4/video/VideoApp.dart';
+import 'package:enjoywithyourtour/component/sidebar.dart';
+import 'package:enjoywithyourtour/rating/ratinglist.dart';
+import 'package:enjoywithyourtour/pages/Maps.dart';
+import 'package:enjoywithyourtour/pages/TimePage.dart';
+import 'package:enjoywithyourtour/video/VideoApp.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.rate_review), label: "Rating List"),
           BottomNavigationBarItem(
               icon: Icon(Icons.video_camera_front), label: "Video"),
-          BottomNavigationBarItem(icon: Icon(Icons.map), label: "Maps"),
+          BottomNavigationBarItem(icon: Icon(Icons.map), label: "Maps")
         ],
         onTap: (index) {
           setState(() {

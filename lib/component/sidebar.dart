@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:group4/main.dart';
+import 'package:enjoywithyourtour/main.dart';
 
 class Sidebar extends StatefulWidget {
   const Sidebar({Key? key}) : super(key: key);
@@ -74,7 +74,7 @@ class _SidebarState extends State<Sidebar> {
           ),
           ListTile(
             leading: const Image(
-              image: AssetImage('assets/China.png'),
+              image: AssetImage('assets/china.png'),
               width: 30,
             ),
             title: const Text(
