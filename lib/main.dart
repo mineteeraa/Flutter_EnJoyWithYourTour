@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:group4/component/sidebar.dart';
 import 'package:group4/rating/ratinglist.dart';
+import 'package:group4/pages/Maps.dart';
 import 'package:group4/pages/TimePage.dart';
 
 Future<void> main() async {
@@ -40,7 +41,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final tabs = [
       TimePage(TimeZone: widget.TimeZone, Country: widget.Country),
-      RatingList()
+      RatingList(),
+      Maps(),
     ];
     return Scaffold(
       appBar: AppBar(
@@ -54,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Homepage"),
           BottomNavigationBarItem(
               icon: Icon(Icons.rate_review), label: "Rating List"),
+          BottomNavigationBarItem(icon: Icon(Icons.map), label: "Maps"),
         ],
         onTap: (index) {
           setState(() {
