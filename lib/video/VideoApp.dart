@@ -39,24 +39,50 @@ class _VideoAppState extends State<VideoApp> {
           crossAxisAlignment: CrossAxisAlignment.center,
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("AEC" , style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text("One Vision, One Identity, One Community"),
-            FutureBuilder(
-              future: _initializeVideoPlayerFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return AspectRatio(
-                    aspectRatio: _videoPlayerController.value.aspectRatio,
-                    child: VideoPlayer(_videoPlayerController),
-                  );
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
+            SizedBox(
+              height: 30,
             ),
-            Text("Please press play button"),
+            Text("AEC",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal[800],
+                )),
+            SizedBox(
+              height: 10,
+            ),
+            Divider(),
+            Text("One Vision, One Identity, One Community",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal[500],
+                )),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FutureBuilder(
+                future: _initializeVideoPlayerFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return AspectRatio(
+                      aspectRatio: _videoPlayerController.value.aspectRatio,
+                      child: VideoPlayer(_videoPlayerController),
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
+            ),
+            Text("Please press play button in buttom",
+                style: TextStyle(
+                  color: Colors.teal[500],
+                )),
           ],
         ),
       ),
@@ -70,6 +96,7 @@ class _VideoAppState extends State<VideoApp> {
             }
           });
         },
+        backgroundColor: Colors.teal,
         child: Icon(
           _videoPlayerController.value.isPlaying
               ? Icons.pause
