@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:group4/component/sidebar.dart';
 import 'package:group4/rating/ratinglist.dart';
+import 'package:group4/pages/Maps.dart';
 import 'package:group4/pages/TimePage.dart';
 import 'package:group4/video/VideoApp.dart';
 
@@ -43,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
       TimePage(TimeZone: widget.TimeZone, Country: widget.Country),
       RatingList(),
       VideoApp()
+      Maps(),
     ];
     return Scaffold(
       appBar: AppBar(
@@ -58,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.rate_review), label: "Rating List"),
           BottomNavigationBarItem(
               icon: Icon(Icons.video_camera_front), label: "Video"),
+          BottomNavigationBarItem(icon: Icon(Icons.map), label: "Maps"),
         ],
         onTap: (index) {
           setState(() {
