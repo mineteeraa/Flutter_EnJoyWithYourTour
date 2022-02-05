@@ -31,9 +31,6 @@ class _VideoAppState extends State<VideoApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Asean Video'),
-      ),
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

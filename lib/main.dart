@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final tabs = [
       TimePage(TimeZone: widget.TimeZone, Country: widget.Country),
       RatingList(),
-      VideoApp()
+      VideoApp(),
       Maps(),
     ];
     return Scaffold(
