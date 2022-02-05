@@ -12,20 +12,14 @@ class VideoApp extends StatefulWidget {
 class _VideoAppState extends State<VideoApp> {
   final video = 'assets/asean1.mp4';
   late VideoPlayerController _videoPlayerController;
-  bool startedPlaying = false;
+  late Future<void> _initializeVideoPlayerFuture;
 
   @override
   void initState() {
     super.initState();
-
-    _videoPlayerController =
-        VideoPlayerController.asset(video);
-    _videoPlayerController.addListener(() {
-      if (startedPlaying && !_videoPlayerController.value.isPlaying) {
-        Navigator.pop(context);
-      }
-    });
-    super.initState();
+    _videoPlayerController = VideoPlayerController.asset(video);
+    _initializeVideoPlayerFuture = _videoPlayerController.initialize();
+    _videoPlayerController.setLooping(true);
   }
 
   @override
@@ -34,31 +28,52 @@ class _VideoAppState extends State<VideoApp> {
     super.dispose();
   }
 
-  Future<bool> started() async {
-    await _videoPlayerController.initialize();
-    await _videoPlayerController.setLooping(true);
-    await _videoPlayerController.play();
-    startedPlaying = true;
-    return true;
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Material(
-      elevation: 0,
-      child: Center(
-        child: FutureBuilder<bool>(
-          future: started(),
-          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            if (snapshot.data == true) {
-              return AspectRatio(
-                aspectRatio: _videoPlayerController.value.aspectRatio,
-                child: VideoPlayer(_videoPlayerController),
-              );
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Asean Video'),
+      ),
+      body: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("AEC" , style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text("One Vision, One Identity, One Community"),
+            FutureBuilder(
+              future: _initializeVideoPlayerFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return AspectRatio(
+                    aspectRatio: _videoPlayerController.value.aspectRatio,
+                    child: VideoPlayer(_videoPlayerController),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+            Text("Please press play button"),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            if (_videoPlayerController.value.isPlaying) {
+              _videoPlayerController.pause();
             } else {
-              return const Text('waiting for video to load');
+              _videoPlayerController.play();
             }
-          },
+          });
+        },
+        child: Icon(
+          _videoPlayerController.value.isPlaying
+              ? Icons.pause
+              : Icons.play_arrow,
         ),
       ),
     );
