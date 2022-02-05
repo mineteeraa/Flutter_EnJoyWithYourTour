@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:group4/component/sidebar.dart';
 import 'package:group4/rating/ratinglist.dart';
 import 'package:group4/pages/TimePage.dart';
+import 'package:group4/video/VideoApp.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +41,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final tabs = [
       TimePage(TimeZone: widget.TimeZone, Country: widget.Country),
-      RatingList()
+      RatingList(),
+      VideoApp()
     ];
     return Scaffold(
       appBar: AppBar(
@@ -54,6 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Homepage"),
           BottomNavigationBarItem(
               icon: Icon(Icons.rate_review), label: "Rating List"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.video_camera_front), label: "Video"),
         ],
         onTap: (index) {
           setState(() {

@@ -40,6 +40,7 @@ dependencies:
   form_field_validator: ^1.1.0
   firebase_core: ^1.12.0
   cloud_firestore: ^3.1.7
+  video_player: ^2.2.18
 
 dev_dependencies:
   flutter_test:
@@ -58,7 +59,8 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - assets/
+    # - assets/
+    - assets/asean1.mp4
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
