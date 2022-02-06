@@ -1,3 +1,3 @@
-[Group 4] 953494 - Term Project
+# 🌟 [Group 3] 953494 - Term Project 🌟
 
-A new Flutter project.
+A Flutter project name is EnJoy With Your Tour.
